@@ -9,7 +9,7 @@ export function onRequest(context, next) {
     }
 
     context.locals.website = `${url.protocol}//${hostname}`;
-    context.locals.target = url.href;
+    context.locals.target = subdomain;
 
     console.log(`Request for url: ${context.request.url}, subdomain: ${subdomain}`);
     console.log(`Set context.locals.website to: ${context.locals.website}`);
