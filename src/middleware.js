@@ -8,6 +8,10 @@ export function onRequest(context, next) {
         subdomain = parts[0];
     }
 
+    if (subdomain === "bochum") {
+        subdomain = "dortmund";
+    }
+
     context.locals.website = `${url.protocol}//${hostname}`;
     context.locals.target = subdomain;
 
