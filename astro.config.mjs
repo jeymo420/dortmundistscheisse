@@ -11,6 +11,6 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  site: 'https://istscheis.se',
   adapter: vercel(),
+  output: 'server'
 });
