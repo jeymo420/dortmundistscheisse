@@ -1,6 +1,8 @@
 ---
+import { capitalize } from "../utils/strings";
+
 const { website, target } = Astro.locals;
-const capitalized = target.charAt(0).toUpperCase() + target.slice(1);
+const capitalized = capitalize(target);
 const suffix = target.at(-1) === "e" ? "r" : "er";
 ---
 
