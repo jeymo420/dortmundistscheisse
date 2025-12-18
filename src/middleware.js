@@ -1,5 +1,6 @@
 export function onRequest(context, next) {
-    const hostname = context.url.hostname;
+    const url = new URL(context.request.url);
+    const hostname = url.hostname;
     const parts = hostname.split(".");
 
     let subdomain = "Dortmund";
@@ -7,8 +8,8 @@ export function onRequest(context, next) {
         subdomain = parts[0];
     }
 
-    context.locals.website = context.url.origin;
+    context.locals.website = `${url.protocol}//${hostname}`;
     context.locals.target = subdomain;
 
     return next();
-};
+}
