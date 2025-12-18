@@ -1,0 +1,10 @@
+---
+import Main from "../components/Main.astro";
+import Layout from "../layouts/Layout.astro";
+
+const { target } = Astro.locals;
+---
+
+<Layout title={`${target} ist scheiße`}>
+	<Main />
+</Layout>
