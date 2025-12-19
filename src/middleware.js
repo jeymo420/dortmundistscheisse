@@ -8,7 +8,7 @@ export function onRequest(context, next) {
         subdomain = parts[0];
     }
 
-    if (subdomain === "bochum") {
+    if (subdomain.toLowerCase().includes("bochum")) {
         subdomain = "dortmund";
     }
 

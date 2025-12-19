@@ -2,8 +2,15 @@
 import { capitalize } from "../utils/strings";
 
 const { website, target } = Astro.locals;
-const capitalized = capitalize(target);
-const suffix = target.at(-1) === "e" ? "r" : "er";
+let capitalized, suffix;
+
+if (capitalize(target) !== 'Dortmund') {
+	capitalized = capitalize(target);
+	suffix = target.at(-1) === "e" ? "r" : "er";
+} else {
+	capitalized = "Zecke";
+	suffix = "";
+}
 ---
 
 <div class="flex items-center justify-center min-h-screen bg-gray-100 p-4">
