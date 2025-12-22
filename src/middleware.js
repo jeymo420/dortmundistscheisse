@@ -1,9 +1,11 @@
+import { domainToUnicode } from "node:url";
+
 export function onRequest(context, next) {
     const url = new URL(context.request.url);
-    const hostname = url.hostname;
+    const hostname = domainToUnicode(url.hostname);
     const parts = hostname.split(".");
 
-    let subdomain = "";
+    let subdomain = "düsseldorf";
     if (hostname !== "localhost" && !/^\d+\.\d+\.\d+\.\d+$/.test(hostname) && parts.length > 2) {
         subdomain = parts[0];
     }
