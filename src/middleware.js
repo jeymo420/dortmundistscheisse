@@ -11,8 +11,8 @@ export function onRequest(context, next) {
     }
     
     const sd = subdomain.toLowerCase();
-    const redirectMatches = ["bochum", "4630"];
-    if (redirectMatches.some(m => sd.includes(m))) {
+    const redirectMatches = ["bochum", "46bo", "46b0", "4630"];
+    if (redirectMatches.some(match => sd === match)) {
         context.response = Response.redirect(
             "https://dortmund.istscheis.se",
             302
