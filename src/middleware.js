@@ -13,11 +13,10 @@ export function onRequest(context, next) {
     const sd = subdomain.toLowerCase();
     const redirectMatches = ["bochum", "46bo", "46b0", "4630"];
     if (redirectMatches.some(match => sd === match)) {
-        context.response = Response.redirect(
+        return Response.redirect(
             "https://dortmund.istscheis.se",
             302
         );
-        return;
     }
 
     context.locals.website = `${url.protocol}//${hostname}`;
