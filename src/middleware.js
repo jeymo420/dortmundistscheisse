@@ -7,9 +7,15 @@ export function onRequest(context, next) {
     if (hostname !== "localhost" && !/^\d+\.\d+\.\d+\.\d+$/.test(hostname) && parts.length > 2) {
         subdomain = parts[0];
     }
-
-    if (subdomain.toLowerCase().includes("bochum")) {
-        subdomain = "dortmund";
+    
+    const sd = subdomain.toLowerCase();
+    const redirectMatches = ["bochum", "4630"];
+    if (redirectMatches.some(m => sd.includes(m))) {
+        context.response = Response.redirect(
+            "https://dortmund.istscheis.se",
+            302
+        );
+        return;
     }
 
     context.locals.website = `${url.protocol}//${hostname}`;
