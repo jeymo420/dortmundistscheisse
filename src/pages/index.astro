@@ -2,10 +2,19 @@
 import { capitalize } from "../utils/strings";
 import Main from "../components/Main.astro";
 import Layout from "../layouts/Layout.astro";
+import Search from "../components/Search.astro";
 
-const { target } = Astro.locals;
+const { target }: {
+	target: string
+} = Astro.locals;
+
+const Component = {
+	search: Search,
+	"": Search, 
+}?.[target] as any || Main
+
 ---
 
-<Layout title={`${capitalize(target)} ist scheiße`}>
-	<Main />
+<Layout title={target === "search" ? 'Suche' : `${capitalize(target)} ist scheiße`}>
+	<Component />
 </Layout>
