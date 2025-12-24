@@ -4,18 +4,22 @@ import Main from "../components/Main.astro";
 import Layout from "../layouts/Layout.astro";
 import Search from "../components/Search.astro";
 
-const { target }: {
-	target: string
+const {
+	target,
+}: {
+	target: string;
 } = Astro.locals;
 
-const Component = {
-	search: Search,
-	"": Search,
-	"www": Search,
-}?.[target] as any || Main
+const targets = {
+	"": { component: Search, title: "Suche" },
+	search: { component: Search, title: "Suche" },
+	www: { component: Search, title: "Suche" },
+};
 
+const Component = targets?.[target]?.component || Main;
+const title = targets?.[target]?.title || `${capitalize(target)} ist scheiße`;
 ---
 
-<Layout title={target === "search" ? 'Suche' : `${capitalize(target)} ist scheiße`}>
+<Layout {title}>
 	<Component />
 </Layout>
