@@ -10,12 +10,12 @@ const {
 	target: string;
 } = Astro.locals;
 
-const DEFAULT_TITLE = "Wer ist scheis.se?";
+const SEARCH_TITLE = "Wer ist scheis.se?";
 
 const targets = {
-	"": { component: Search, title: DEFAULT_TITLE },
-	search: { component: Search, title: DEFAULT_TITLE },
-	www: { component: Search, title: DEFAULT_TITLE },
+	"": { component: Search, title: SEARCH_TITLE },
+	search: { component: Search, title: SEARCH_TITLE },
+	www: { component: Search, title: SEARCH_TITLE },
 };
 
 const Component = targets?.[target]?.component || Main;
