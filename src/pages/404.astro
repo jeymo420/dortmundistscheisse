@@ -1,11 +1,3 @@
 ---
-import { capitalize } from "../utils/strings";
-import Main from "../components/Main.astro";
-import Layout from "../layouts/Layout.astro";
-
-const { target } = Astro.locals;
+return Astro.rewrite("/");
 ---
-
-<Layout title={`${capitalize(target)} ist scheiße`}>
-	<Main />
-</Layout>
