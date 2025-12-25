@@ -1,6 +1,7 @@
 ---
 import BaseHead from "@/components/BaseHead.astro";
 import Footer from "@/components/global/Footer.astro";
+import Nav from "@/components/global/Nav.astro";
 ---
 
 <html lang="en">
@@ -9,6 +10,7 @@ import Footer from "@/components/global/Footer.astro";
 	</head>
 	<body class="flex justify-center">
 		<div class="bg-white max-w-6xl mx-auto px-8 lg:px-12 flex flex-col">
+			<Nav/>
 			<main class="grow"><slot /></main>
 			<Footer />
 		</div>
