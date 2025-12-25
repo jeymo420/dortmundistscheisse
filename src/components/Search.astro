@@ -1,8 +1,9 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 
-const {	title } = Astro.props;
+const { title } = Astro.props;
 ---
+
 <Layout {title}>
 	<div class="flex flex-col items-center justify-center w-full h-dvh px-4">
 		<div class="flex justify-center mb-8">
@@ -31,6 +32,7 @@ const {	title } = Astro.props;
 					placeholder="Dortmund, Schalke, Düsseldorf..."
 					class="grow outline-none text-gray-800 text-[16px]"
 					autocomplete="off"
+					oninput="this.value = this.value.replace(/[^A-Za-z0-9]/g, '')"
 				/>
 			</div>
 
