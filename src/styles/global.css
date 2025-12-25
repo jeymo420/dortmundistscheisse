@@ -71,3 +71,7 @@
         font-family: InterVariable, sans-serif;
     }
 }
+
+.qty-btn {
+    @apply w-10 h-9 border border-slate-300 hover:border-bochumb text-sm flex items-center justify-center;
+}

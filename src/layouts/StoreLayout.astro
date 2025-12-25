@@ -9,8 +9,9 @@ import Nav from "@/components/global/Nav.astro";
 		<BaseHead />
 	</head>
 	<body class="flex justify-center">
-		<div class="bg-white max-w-6xl mx-auto px-8 lg:px-12 flex flex-col">
-			<Nav/>
+		<div
+			class="bg-white max-w-6xl mx-auto px-8 lg:px-12 flex flex-col min-h-dvh">
+			<Nav />
 			<main class="grow"><slot /></main>
 			<Footer />
 		</div>

@@ -5,7 +5,7 @@ export function onRequest(context, next) {
     const hostname = domainToUnicode(url.hostname);
     const parts = hostname.split(".");
 
-    let subdomain = "dortmund";
+    let subdomain = "shop";
     if (hostname !== "localhost" && !/^\d+\.\d+\.\d+\.\d+$/.test(hostname) && parts.length > 2) {
         subdomain = parts[0];
     }
