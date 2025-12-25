@@ -2,7 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import { capitalize } from "../utils/strings";
 
-const {	title } = Astro.props;
+const { title } = Astro.props;
 const { website, target } = Astro.locals;
 
 let capitalized = "";
@@ -19,6 +19,23 @@ if (capitalize(target) === "Dortmund") {
 
 <Layout {title}>
 	<div class="flex items-center justify-center min-h-screen p-4 bg-gray-100">
+		<a
+			href="/"
+			class="absolute top-1 left-1 inline-flex items-center gap-2 mb-8 text-bochumb hover:text-slate-400 transition-colors">
+			<svg
+				class="w-5 h-5"
+				fill="none"
+				stroke="currentColor"
+				viewBox="0 0 24 24">
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+			</svg>
+			Home
+		</a>
+
 		<div
 			class="bg-white border-16 border-black p-6 w-full max-w-md text-center font-sans tracking-tight">
 			<h1 class="text-6xl md:text-7xl font-bold text-black leading mb-8">
