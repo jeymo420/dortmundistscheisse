@@ -1,91 +1,99 @@
-<div class="flex flex-col items-center justify-center w-full h-dvh px-4">
-	<div class="flex justify-center mb-8">
-		<img src="/favicon.svg" alt="Logo" class="w-32" />
-	</div>
+---
+import Layout from "@/layouts/Layout.astro";
 
-	<form id="searchForm" class="w-full max-w-146 group">
-		<div
-			class="relative flex items-center w-full px-4 py-2.5 border border-gray-200 rounded-full hover:shadow-md focus-within:shadow-md transition-shadow duration-200 bg-white">
-			<div class="mr-3 text-gray-400">
-				<svg
-					focusable="false"
-					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 24 24"
-					class="w-5 h-5 fill-current">
-					<path
-						d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
-					></path>
-				</svg>
+const {	title } = Astro.props;
+---
+<Layout {title}>
+	<div class="flex flex-col items-center justify-center w-full h-dvh px-4">
+		<div class="flex justify-center mb-8">
+			<img src="/favicon.svg" alt="Logo" class="w-32" />
+		</div>
+
+		<form id="searchForm" class="w-full max-w-146 group">
+			<div
+				class="relative flex items-center w-full px-4 py-2.5 border border-gray-200 rounded-full hover:shadow-md focus-within:shadow-md transition-shadow duration-200 bg-white">
+				<div class="mr-3 text-gray-400">
+					<svg
+						focusable="false"
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						class="w-5 h-5 fill-current">
+						<path
+							d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+						></path>
+					</svg>
+				</div>
+
+				<input
+					type="text"
+					name="q"
+					id="searchInput"
+					placeholder="Dortmund, Schalke, Düsseldorf..."
+					class="grow outline-none text-gray-800 text-[16px]"
+					autocomplete="off"
+				/>
 			</div>
 
-			<input
-				type="text"
-				name="q"
-				id="searchInput"
-				placeholder="Dortmund, Schalke, Düsseldorf..."
-				class="grow outline-none text-gray-800 text-[16px]"
-				autocomplete="off"
-			/>
-		</div>
+			<div class="flex space-x-3 mt-6 justify-center">
+				<button
+					type="submit"
+					class="px-4 py-2 bg-[#f8f9fa] text-sm text-[#3c4043] rounded-lg border border-transparent hover:border-gray-300 hover:shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500">
+					Sticker Suche
+				</button>
+				<button
+					type="button"
+					id="randomBtn"
+					class="px-4 py-2 bg-[#f8f9fa] text-sm text-[#3c4043] rounded-lg border border-transparent hover:border-gray-300 hover:shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500">
+					Auf gut Glück
+				</button>
+			</div>
+			<div class="mt-8 text-sm text-center">
+				<span>Interesse an den Stickern? Unser shop ist live! </span> Besuche
+				<a href="https://shop.istscheis.se" class="text-slate-400"
+					>shop.istscheis.se</a
+				>
+			</div>
+		</form>
+	</div>
 
-		<div class="flex space-x-3 mt-6 justify-center">
-			<button
-				type="submit"
-				class="px-4 py-2 bg-[#f8f9fa] text-sm text-[#3c4043] rounded-lg border border-transparent hover:border-gray-300 hover:shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500">
-				Sticker Suche
-			</button>
-			<button
-				type="button"
-				id="randomBtn"
-				class="px-4 py-2 bg-[#f8f9fa] text-sm text-[#3c4043] rounded-lg border border-transparent hover:border-gray-300 hover:shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500">
-				Auf gut Glück
-			</button>
-		</div>
-		<div class="mt-8 text-sm text-center">
-			<span>Interesse an den Stickern? Unser shop ist live! </span> Besuche
-			<a href="https://shop.istscheis.se" class="text-slate-400"
-				>shop.istscheis.se</a
-			>
-		</div>
-	</form>
-</div>
+	<script type="module">
+		const form = document.getElementById("searchForm");
+		const input = document.getElementById("searchInput");
+		const randomBtn = document.getElementById("randomBtn");
 
-<script type="module">
-	const form = document.getElementById("searchForm");
-	const input = document.getElementById("searchInput");
-	const randomBtn = document.getElementById("randomBtn");
+		form.addEventListener("submit", (e) => {
+			e.preventDefault();
+			const query = input.value.trim();
+			if (query) {
+				// Redirect to subdomain
+				window.location.href = `https://${encodeURIComponent(query)}.istscheis.se`;
+			}
+		});
 
-	form.addEventListener("submit", (e) => {
-		e.preventDefault();
-		const query = input.value.trim();
-		if (query) {
-			// Redirect to subdomain
-			window.location.href = `https://${encodeURIComponent(query)}.istscheis.se`;
-		}
-	});
-
-	randomBtn.addEventListener("click", () => {
-		const locations = [
-	"dortmund",
-	"schalke",
-	"düsseldorf",
-	"essen",
-	"köln",
-	"bielefeld",
-	"hamburg",
-	"berlin",
-	"duisburg",
-	"hannover",
-	"leipzig",
-	"frankfurt",
-	"stuttgart",
-	"nürnberg",
-	"bremen",
-	"karlsruhe",
-	"mainz",
-	"kassel",
-	];
-	const random = locations[Math.floor(Math.random() * locations.length)];
-		window.location.href = `https://${random}.istscheis.se`;
-	});
-</script>
+		randomBtn.addEventListener("click", () => {
+			const locations = [
+				"dortmund",
+				"schalke",
+				"düsseldorf",
+				"essen",
+				"köln",
+				"bielefeld",
+				"hamburg",
+				"berlin",
+				"duisburg",
+				"hannover",
+				"leipzig",
+				"frankfurt",
+				"stuttgart",
+				"nürnberg",
+				"bremen",
+				"karlsruhe",
+				"mainz",
+				"kassel",
+			];
+			const random =
+				locations[Math.floor(Math.random() * locations.length)];
+			window.location.href = `https://${random}.istscheis.se`;
+		});
+	</script>
+</Layout>
