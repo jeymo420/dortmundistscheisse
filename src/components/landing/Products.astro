@@ -1,0 +1,90 @@
+---
+import { Image } from "astro:assets";
+import p1 from "@/images/DortmundSticker.png";
+import p2 from "@/images/SchalkeSticker.png";
+import p3 from "@/images/DüsseldorfSticker.png";
+import p4 from "@/images/ScheisseMix.png";
+import p5 from "@/images/4630Sticker.png";
+import p6 from "@/images/4630StickerSet.png";
+const products = [
+	{
+		url: "#_",
+		title: "Dortmund ist scheiße Sticker",
+		subtitle: "50 Stck., einseitig hochglänzend gestrichen",
+		price: "5€",
+		image: p1,
+	},
+	{
+		url: "#_",
+		title: "Schalke ist scheiße",
+		subtitle: "50 Stck., einseitig hochglänzend gestrichen",
+		price: "5€",
+		image: p2,
+	},
+	{
+		url: "#_",
+		title: "Düsseldorf ist scheiße",
+		subtitle: "50 Stck., einseitig hochglänzend gestrichen",
+		price: "5€",
+		image: p3,
+	},
+	{
+		url: "#_",
+		title: "Scheiße Sticker Mix",
+		subtitle:
+			"200 Stck., gemischte Motive, einseitig hochglänzend gestrichen",
+		price: "18,48€",
+		image: p4,
+	},
+	{
+		url: "#_",
+		title: "4630 Fanclub Sticker Quadrat",
+		subtitle: "40 Stck., einseitig hochglänzend gestrichen",
+		price: "4,80€",
+		image: p5,
+	},
+	{
+		url: "#_",
+		title: "4630 Fanclub Sticker Mix",
+		subtitle:
+			"200 Stck., gemischte Motive, einseitig hochglänzend gestrichen",
+		price: "18,48€",
+		image: p6,
+	},
+];
+---
+
+<section>
+	<div
+		class="grid grid-cols-1 gap-6 lg:gap-y-24 md:grid-cols-2 lg:grid-cols-3 py-12">
+		{
+			products.map((product) => (
+				<figure class="relative ">
+					<a
+						href={product.url}
+						aria-hidden="true"
+						class="absolute inset-0"
+					/>
+					<Image
+						width="800"
+						height="800"
+						alt={product.title}
+						src={product.image}
+						class="w-full rounded-3xl shadow aspect-12/9 object-cover object-center"
+					/>
+					<div class="mt-2 flex justify-between px-6">
+						<div>
+							<p class="mt-1 text-sm font-medium  text-base-900">
+								{product.title}
+							</p>
+							<h3 class="text-xs text-base-500">
+								{product.subtitle}
+							</h3>
+						</div>
+						<p class="text-base text-bochumb">{product.price}</p>
+					</div>
+				</figure>
+			))
+		}
+	</div>
+</section>

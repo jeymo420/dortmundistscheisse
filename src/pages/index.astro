@@ -1,8 +1,9 @@
 ---
-import { capitalize } from "../utils/strings";
-import Main from "../components/Main.astro";
-import Layout from "../layouts/Layout.astro";
-import Search from "../components/Search.astro";
+import { capitalize } from "@/utils/strings";
+import Main from "@/components/Main.astro";
+import Layout from "@/layouts/Layout.astro";
+import Search from "@/components/Search.astro";
+import Shop from "@/components/Shop.astro";
 
 const {
 	target,
@@ -16,6 +17,7 @@ const targets = {
 	"": { component: Search, title: SEARCH_TITLE },
 	search: { component: Search, title: SEARCH_TITLE },
 	www: { component: Search, title: SEARCH_TITLE },
+	shop: { component: Shop, title: "Ist schei.se Shop" },
 };
 
 const Component = targets?.[target]?.component || Main;
