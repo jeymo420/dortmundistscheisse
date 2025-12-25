@@ -1,35 +1,40 @@
 ---
+import Layout from "@/layouts/Layout.astro";
 import { capitalize } from "../utils/strings";
 
+const {	title } = Astro.props;
 const { website, target } = Astro.locals;
 
-let capitalized = '';
-let suffix = '';
+let capitalized = "";
+let suffix = "";
 
-if (capitalize(target) === 'Dortmund') {
-	capitalized = 'Zecke';
+if (capitalize(target) === "Dortmund") {
+	capitalized = "Zecke";
 } else {
 	capitalized = capitalize(target);
 	suffix = target.at(-1)!;
-	suffix = suffix === 'e' ? 'r' : 'er';
+	suffix = suffix === "e" ? "r" : "er";
 }
 ---
 
-<div class="flex items-center justify-center min-h-screen p-4 bg-gray-100">
-	<div
-		class="bg-white border-16 border-black p-6 w-full max-w-md text-center font-sans tracking-tight">
-		<h1 class="text-6xl md:text-7xl font-bold text-black leading mb-8">
-			{target.charAt(0).toUpperCase() + target.slice(1)}<br />ist scheiße
-		</h1>
+<Layout {title}>
+	<div class="flex items-center justify-center min-h-screen p-4 bg-gray-100">
+		<div
+			class="bg-white border-16 border-black p-6 w-full max-w-md text-center font-sans tracking-tight">
+			<h1 class="text-6xl md:text-7xl font-bold text-black leading mb-8">
+				{target.charAt(0).toUpperCase() + target.slice(1)}<br />ist
+				scheiße
+			</h1>
 
-		<div class="text-black font-semibold">
-			<p class="text-base leading-none">
-				Niemand muss {capitalized}{suffix} sein,
-			</p>
-			<p class="text-base leading-none">es ist noch nicht zu spät.</p>
-			<a class="text-base underline leading-none" href={website}>
-				{website}
-			</a>
+			<div class="text-black font-semibold">
+				<p class="text-base leading-none">
+					Niemand muss {capitalized}{suffix} sein,
+				</p>
+				<p class="text-base leading-none">es ist noch nicht zu spät.</p>
+				<a class="text-base underline leading-none" href={website}>
+					{website}
+				</a>
+			</div>
 		</div>
 	</div>
-</div>
+</Layout>

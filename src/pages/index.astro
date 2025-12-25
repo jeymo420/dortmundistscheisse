@@ -1,7 +1,6 @@
 ---
 import { capitalize } from "@/utils/strings";
 import Main from "@/components/Main.astro";
-import Layout from "@/layouts/Layout.astro";
 import Search from "@/components/Search.astro";
 import Shop from "@/components/Shop.astro";
 
@@ -18,12 +17,11 @@ const targets = {
 	search: { component: Search, title: SEARCH_TITLE },
 	www: { component: Search, title: SEARCH_TITLE },
 	shop: { component: Shop, title: "Ist schei.se Shop" },
+	store: { component: Shop, title: "Ist schei.se Shop" },
 };
 
 const Component = targets?.[target]?.component || Main;
 const title = targets?.[target]?.title || `${capitalize(target)} ist scheiße`;
 ---
 
-<Layout {title}>
-	<Component />
-</Layout>
+<Component {title} />
